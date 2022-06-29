@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height">
+    <title>信息学院信息</title>
+    <script defer src="my-charts.dart.js"></script>
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      html,
+      body {
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="hint">Not Connect</div>
+
+    <div id="mountNode"></div>
+    <script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.5.1/dist/g2.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.1/dist/data-set.min.js"></script>
+    <script>
+      var data = [{
+        专业: '计科',
+        count: 80
+      }, {
+        专业: '通信',
+        count: 40
+      }, {
+        专业: '智科',
+        count: 30
+      }, {
+        专业: '电子',
+        count: 40
+      }];
+
+      var chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight
+      });
+      chart.source(data);
+      //chart.coord('polar');//饼状图
+      chart.legend({
+        position: 'right',
+        offsetY: -window.innerHeight / 2 + 180,
+        offsetX: -140
+      });
+      chart.axis(false);
+      chart.interval().position('专业*count').color('count', G2.Global.colors_pie_16).style({
+        lineWidth: 1,
+        //stroke: '#fff'
+      });
+      chart.render();
+    </script>
+  </body>
+
+</html>
